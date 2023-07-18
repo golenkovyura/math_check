@@ -2,6 +2,10 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from math import fabs
 import time
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 url = input('Вставьте ссылку на тест по математике: ')
 
@@ -17,11 +21,11 @@ driver.minimize_window()
 
 email_input = driver.find_element('id', 'Email')
 email_input.clear()
-email_input.send_keys('karina.gashimova@maximumtest.ru')
+email_input.send_keys(os.getenv('EMAIL'))
 
 password_input = driver.find_element('id', 'Password')
 password_input.clear()
-password_input.send_keys('YP82A7')
+password_input.send_keys(os.getenv('PASSWORD'))
 
 driver.find_element('id', 'RememberMe').click() # клик по "Запомнить меня"
 
